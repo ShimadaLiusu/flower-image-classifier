@@ -63,6 +63,5 @@ flowers-sort
 
 
 ## TODO
-- requirements.txt
+- AlexNet代码没改好
 - 闲了写写其他网络跑一下训练
-- 闲了写`test_model.py`

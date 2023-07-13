@@ -9,6 +9,7 @@ import h5py
 
 from models.flower_simple import FlowerModel
 from models.flower_resnet50 import Resnet50_model
+from models.flower_alexnet import AlexNet
 
 #获取所有花卉类别
 train_dir = "./dataset/train"
@@ -47,15 +48,15 @@ def select_image():
 
 # 图像分类检测
 def classify_image():
-    if selected_image_path:
-        # 进行图像分类
+    if selected_image_path:     #用户已经选择图像后可以分类
+       
         img = tf.keras.preprocessing.image.load_img(selected_image_path, target_size=(IMG_HEIGHT, IMG_WIDTH))
         img = tf.keras.preprocessing.image.img_to_array(img)
         img = np.expand_dims(img, axis=0)
         img = img / 255.0  # 图像预处理，与训练时一致
         prediction = model.predict(img)
         predicted_class_index = np.argmax(prediction)
-        predicted_class = class_names[predicted_class_index]
+        predicted_class = class_names[predicted_class_index]    #预测结果
 
         class_mapping = {
             "daisy": "小雏菊",
@@ -66,7 +67,7 @@ def classify_image():
             "tulips": "郁金香"
         }
 
-        # 从map中获取英文名对应的中文
+        # 获取英文名对应的中文
         predicted_class_cn = class_mapping.get(predicted_class, predicted_class)
 
         # 显示分类结果
@@ -81,12 +82,12 @@ select_button.grid(row=0, column=0, padx=10, pady=10)
 classify_button = tk.Button(window, text="分类", command=classify_image, **button_style)
 classify_button.grid(row=0, column=1, padx=10, pady=10)
 
-# 创建图像显示标签
+# 创建显示图像的标签
 image_label = tk.Label(window)
 image_label.grid(row=1, column=0, columnspan=2, padx=10, pady=10)
 
 # 创建显示结果的标签
 result_label = tk.Label(window, text="分类结果: ", font=("微软雅黑", 14, "bold"))
 result_label.grid(row=2, column=0, columnspan=2, padx=10, pady=10, sticky="s")
-# 运行GUI主循环
+
 window.mainloop()

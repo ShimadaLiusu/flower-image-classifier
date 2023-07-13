@@ -25,5 +25,5 @@ print(i)
 
 import splitfolders
 # 数据集划分
-# train:validation:test=6:2:2
-splitfolders.ratio(input='./dataset', output='output', seed=1337, ratio=(0.6, 0.2, 0.2))
+# train:validation=8:2
+splitfolders.ratio(input='./dataset', output='output', seed=1337, ratio=(0.8, 0.2, 0.0))

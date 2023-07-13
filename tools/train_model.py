@@ -67,21 +67,23 @@ if __name__ == '__main__':
     )
 
     # 训练模型
-    '''
+    
     #最简单的
-    model = FlowerModel(class_names) 
+    #model = FlowerModel(class_names) 
     
     #resnet50
     input_shape = (224, 224, 3)
     num_classes = len(class_names)
     model = Resnet50_model(input_shape, num_classes)
     model.summary()     #打印模型信息
-    '''
+    
     
     #AlexNet，网络输入为227*227*3
-    model = AlexNet()
+    #model = AlexNet()
 
-    model.compile(optimizer="sgd", loss="sparse_categorical_crossentropy", metrics=["accuracy"])
+    model.compile(optimizer="sgd", 
+                  loss="sparse_categorical_crossentropy", 
+                  metrics=["accuracy"])
     history = model.fit(train_dataset, validation_data=val_dataset, epochs=EPOCHS)
 
     # 保存模型权重
