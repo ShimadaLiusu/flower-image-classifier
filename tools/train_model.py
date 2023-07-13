@@ -10,6 +10,7 @@ import sys
 sys.path.append('.')
 from models.flower_simple import FlowerModel
 from models.flower_resnet50 import Resnet50_model
+from models.flower_alexnet import AlexNet
 
 # 可视化训练过程
 def visualize(history):
@@ -43,8 +44,8 @@ if __name__ == '__main__':
 
     # batch size 一次训练选择的样本数，要考虑GPU性能等，不宜太大
     BATCH_SIZE = 32
-    IMG_HEIGHT = 224
-    IMG_WIDTH = 224
+    IMG_HEIGHT = 227
+    IMG_WIDTH = 227
     EPOCHS = 25
 
     # 加载训练集
@@ -66,15 +67,20 @@ if __name__ == '__main__':
     )
 
     # 训练模型
+    '''
     #最简单的
     model = FlowerModel(class_names) 
-    '''
+    
     #resnet50
     input_shape = (224, 224, 3)
     num_classes = len(class_names)
     model = Resnet50_model(input_shape, num_classes)
     model.summary()     #打印模型信息
     '''
+    
+    #AlexNet，网络输入为227*227*3
+    model = AlexNet()
+
     model.compile(optimizer="sgd", loss="sparse_categorical_crossentropy", metrics=["accuracy"])
     history = model.fit(train_dataset, validation_data=val_dataset, epochs=EPOCHS)
 
