@@ -63,5 +63,5 @@ flowers-sort
 
 
 ## TODO
-- AlexNet代码没改好
+- AlexNet.py
 - 闲了写写其他网络跑一下训练
