@@ -79,7 +79,7 @@ if __name__ == '__main__':
     
     
     #AlexNet，网络输入为227*227*3
-    #model = AlexNet()
+    
 
     model.compile(optimizer="sgd", 
                   loss="sparse_categorical_crossentropy", 
