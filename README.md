@@ -43,7 +43,6 @@ flowers-sort
 │          
 └─tools
         dataset_opt.py
-        test_model.py
         train_model.py
 ```
 `flower_sort.py` ：使用Tkinter实现的花卉种类查询工具，在`./checkpoint/`放训练好的模型权重后使用  
@@ -61,7 +60,3 @@ flowers-sort
 - `train_model.py`，训练模型，训练好的模型存放在`./checkpoint/`
 
 
-
-## TODO
-- AlexNet.py
-- 闲了写写其他网络跑一下训练
